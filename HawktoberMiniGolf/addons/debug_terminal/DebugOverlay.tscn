@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://mublw3gdgtbe"]
+
+[ext_resource type="Script" uid="uid://b32d4j1arnbde" path="res://addons/debug_terminal/DebugOverlay.gd" id="1_htl0h"]
+[ext_resource type="PackedScene" uid="uid://dk7n6s5lffyb7" path="res://addons/debug_terminal/DebugStatsPanel.tscn" id="2_xk0ge"]
+[ext_resource type="PackedScene" uid="uid://g17y4ulqhlmr" path="res://addons/debug_terminal/DebugTerminal.tscn" id="3_30ue4"]
+[ext_resource type="PackedScene" uid="uid://bfhrbtdip32ns" path="res://addons/debug_terminal/DebugSettingsPanel.tscn" id="4_xk0ge"]
+
+[node name="Debug" type="CanvasLayer" unique_id=769356345]
+process_mode = 3
+layer = 999
+script = ExtResource("1_htl0h")
+
+[node name="StatsPanel" parent="." unique_id=1321932355 instance=ExtResource("2_xk0ge")]
+
+[node name="Terminal" parent="." unique_id=382252329 instance=ExtResource("3_30ue4")]
+visible = true
+default_position = null
+default_size = null
+
+[node name="DebugSettingsPanel" parent="." unique_id=2142072013 instance=ExtResource("4_xk0ge")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -418.0
+offset_bottom = 317.0
+grow_horizontal = 0
+size_flags_horizontal = 8
