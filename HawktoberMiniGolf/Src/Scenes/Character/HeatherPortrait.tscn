@@ -193,5 +193,6 @@ animations = [{
 character_name = "Heather"
 
 [node name="Character" parent="." index="0" unique_id=1579253741]
+position = Vector2(226, 469)
 sprite_frames = SubResource("SpriteFrames_ab8kx")
 animation = &"upset"

@@ -134,7 +134,9 @@ animations = [{
 }]
 
 [node name="PAElroyPortrait" unique_id=2014865688 instance=ExtResource("1_nmrjq")]
+character_name = "PAElroy"
 
 [node name="Character" parent="." index="0" unique_id=1579253741]
+position = Vector2(226, 469)
 sprite_frames = SubResource("SpriteFrames_xo0nl")
-animation = &"ponder"
+animation = &"sinister_mad"

@@ -1,8 +1,23 @@
 [gd_scene format=3 uid="uid://betcir7h6j6db"]
 
 [ext_resource type="Script" uid="uid://lqoaqs4femrl" path="res://Src/Scenes/Character/BasePortrait.gd" id="1_vv2vg"]
+[ext_resource type="Texture2D" uid="uid://dn2ic5p0d2tbv" path="res://Assets/Characters/GolfHeather/GolfHeatherDead2.png" id="2_cpq4m"]
 [ext_resource type="Texture2D" uid="uid://da77f11nkdwyv" path="res://Assets/Characters/GolfHeather/HeatherPlaceholder.png" id="2_muy1m"]
 [ext_resource type="Texture2D" uid="uid://ctujutlswe3q4" path="res://Assets/Characters/PAElroy/PAElroyPlaceholder.png" id="3_bilvn"]
+[ext_resource type="Texture2D" uid="uid://gc7tgvakxi1d" path="res://Assets/Characters/GolfHeather/GolfHeatherDead3.png" id="3_e35x2"]
+[ext_resource type="Texture2D" uid="uid://hx21xpgjyypv" path="res://Assets/Characters/GolfHeather/GolfHeatherDead4.png" id="4_uk4e8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmsvc"]
+atlas = ExtResource("2_cpq4m")
+region = Rect2(0, 0, 906, 1486)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84sxy"]
+atlas = ExtResource("3_e35x2")
+region = Rect2(0, 0, 906, 1486)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyhmi"]
+atlas = ExtResource("4_uk4e8")
+region = Rect2(0, 0, 906, 1486)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w45gy"]
 animations = [{
@@ -21,7 +36,16 @@ animations = [{
 "name": &"curious",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmsvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84sxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyhmi")
+}],
 "loop": 0,
 "name": &"dead",
 "speed": 5.0
@@ -119,9 +143,7 @@ anchors_preset = 0
 script = ExtResource("1_vv2vg")
 
 [node name="Character" type="AnimatedSprite2D" parent="." unique_id=1579253741]
-position = Vector2(69, 414.00003)
-scale = Vector2(0.20294118, 0.20294118)
+position = Vector2(171, 527)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_w45gy")
-animation = &"dead"
 autoplay = "default"
-metadata/_edit_lock_ = true

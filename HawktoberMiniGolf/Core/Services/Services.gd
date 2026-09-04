@@ -6,15 +6,12 @@ var ui: UI
 var debug: Debug
 var audio: Audio
 var globals: Globals
+var dialogue: DialogueManager
 
 
 func _ready() -> void :
 	get_tree().set_auto_accept_quit(false)
 	_register_services()
-	#debug.add_debug_label(
-		#&"GameState", 
-		#game_state.GameStates.keys()[game_state.current_state]
-	#)
 
 
 func _register_services() -> void :
@@ -26,8 +23,10 @@ func _register_services() -> void :
 	
 	audio = Audio.new()
 	add_child(audio)
-	#debug = Debug.new()
-	#add_child(debug)
+	
+	var dialogue_scene: PackedScene = preload("uid://buaidirs1c4xf")
+	dialogue = dialogue_scene.instantiate()
+	add_child(dialogue)
 	
 	globals = Globals.new()
 
