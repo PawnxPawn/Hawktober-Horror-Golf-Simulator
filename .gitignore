@@ -8,3 +8,5 @@ export_presets.cfg
 .mono/
 
 HawktoberMiniGolf/.godot/
+
+HawktoberMiniGolf/addons/debug_terminal/demo/
