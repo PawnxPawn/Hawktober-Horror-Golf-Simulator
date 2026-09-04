@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://c7xr7pjq40o2g"]
 
+[ext_resource type="Script" uid="uid://n41tcviwxrsk" path="res://Src/Scenes/Levels/MainMenu.gd" id="1_x3rag"]
+
 [node name="MainMenu" type="Control" unique_id=521451885]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_x3rag")
 
 [node name="Title" type="Label" parent="." unique_id=879488060]
 layout_mode = 1

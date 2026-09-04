@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://betcir7h6j6db"]
+
+[ext_resource type="Script" uid="uid://lqoaqs4femrl" path="res://Src/Scenes/Character/BasePortrait.gd" id="1_vv2vg"]
+[ext_resource type="Texture2D" uid="uid://da77f11nkdwyv" path="res://Assets/Characters/GolfHeather/HeatherPlaceholder.png" id="2_muy1m"]
+[ext_resource type="Texture2D" uid="uid://ctujutlswe3q4" path="res://Assets/Characters/PAElroy/PAElroyPlaceholder.png" id="3_bilvn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w45gy"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"angry",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"confident",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"curious",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 0,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_muy1m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bilvn")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"disappointed",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"embarrassed",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"excitable",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"fear",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"injured50_default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"injured50_fear",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"injured75",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"injured_fading",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"ponder",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"sad",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"shock",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"sinister_mad",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"sinister_smug",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"smug",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"upset",
+"speed": 5.0
+}]
+
+[node name="BasePortrait" type="Control" unique_id=2014865688]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_vv2vg")
+
+[node name="Character" type="AnimatedSprite2D" parent="." unique_id=1579253741]
+position = Vector2(69, 414.00003)
+scale = Vector2(0.20294118, 0.20294118)
+sprite_frames = SubResource("SpriteFrames_w45gy")
+animation = &"dead"
+autoplay = "default"
+metadata/_edit_lock_ = true

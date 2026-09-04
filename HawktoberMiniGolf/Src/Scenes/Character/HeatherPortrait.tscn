@@ -1,0 +1,197 @@
+[gd_scene format=3 uid="uid://b0q6xt1ne7cws"]
+
+[ext_resource type="PackedScene" uid="uid://betcir7h6j6db" path="res://Src/Scenes/Character/BasePortrait.tscn" id="1_0gb67"]
+[ext_resource type="Texture2D" uid="uid://bdxx0rakwi3p0" path="res://Assets/Characters/GolfHeather/GolfHeatherAngry.png" id="2_c76b1"]
+[ext_resource type="Texture2D" uid="uid://claov3arm3nlh" path="res://Assets/Characters/GolfHeather/GolfHeatherConfident.png" id="3_pbid0"]
+[ext_resource type="Texture2D" uid="uid://bjn08u20xe631" path="res://Assets/Characters/GolfHeather/GolfHeatherCurious.png" id="4_d06yu"]
+[ext_resource type="Texture2D" uid="uid://47l4a50ldatn" path="res://Assets/Characters/GolfHeather/GolfHeatherDead1.png" id="5_dg7jf"]
+[ext_resource type="Texture2D" uid="uid://dn2ic5p0d2tbv" path="res://Assets/Characters/GolfHeather/GolfHeatherDead2.png" id="6_qcv26"]
+[ext_resource type="Texture2D" uid="uid://gc7tgvakxi1d" path="res://Assets/Characters/GolfHeather/GolfHeatherDead3.png" id="7_h357f"]
+[ext_resource type="Texture2D" uid="uid://hx21xpgjyypv" path="res://Assets/Characters/GolfHeather/GolfHeatherDead4.png" id="8_s1e72"]
+[ext_resource type="Texture2D" uid="uid://cjlv5616x2kx7" path="res://Assets/Characters/GolfHeather/GolfHeatherDefault.png" id="9_4lhpq"]
+[ext_resource type="Texture2D" uid="uid://b723xfecr7tao" path="res://Assets/Characters/GolfHeather/GolfHeatherDisappointed.png" id="10_r2wb4"]
+[ext_resource type="Texture2D" uid="uid://bkql75dk50u8y" path="res://Assets/Characters/GolfHeather/GolfHeatherEmbarrassed.png" id="11_s8pop"]
+[ext_resource type="Texture2D" uid="uid://hyhotlb314j6" path="res://Assets/Characters/GolfHeather/GolfHeatherExcitable.png" id="12_wamjd"]
+[ext_resource type="Texture2D" uid="uid://0qni4knva8gl" path="res://Assets/Characters/GolfHeather/GolfHeatherFear.png" id="13_fc4vu"]
+[ext_resource type="Texture2D" uid="uid://ci1itpeyrx045" path="res://Assets/Characters/GolfHeather/GolfHeatherInjured50%.png" id="14_8gabf"]
+[ext_resource type="Texture2D" uid="uid://c34jc825p0bc" path="res://Assets/Characters/GolfHeather/GolfHeatherInjured50%Fear.png" id="15_hou1g"]
+[ext_resource type="Texture2D" uid="uid://dkutol8itj01i" path="res://Assets/Characters/GolfHeather/GolfHeatherInjured75%.png" id="16_jtiyy"]
+[ext_resource type="Texture2D" uid="uid://b3fjbsax3kbqr" path="res://Assets/Characters/GolfHeather/GolfHeatherInjuredFading.png" id="17_73wii"]
+[ext_resource type="Texture2D" uid="uid://3owhdhywbnts" path="res://Assets/Characters/GolfHeather/GolfHeatherPonder.png" id="18_ev27b"]
+[ext_resource type="Texture2D" uid="uid://co46xrnh2hs3c" path="res://Assets/Characters/GolfHeather/GolfHeatherShock.png" id="19_s7imo"]
+[ext_resource type="Texture2D" uid="uid://mu75kyqj72nf" path="res://Assets/Characters/GolfHeather/GolfHeatherUpset.png" id="20_j8mfn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27k5r"]
+atlas = ExtResource("3_pbid0")
+region = Rect2(0, 0, 906, 1486)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxbel"]
+atlas = ExtResource("9_4lhpq")
+region = Rect2(0, 0, 906, 1486)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ab8kx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c76b1")
+}],
+"loop": 1,
+"name": &"angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27k5r")
+}],
+"loop": 1,
+"name": &"confident",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_d06yu")
+}],
+"loop": 1,
+"name": &"curious",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_dg7jf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qcv26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_h357f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s1e72")
+}],
+"loop": 0,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxbel")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_r2wb4")
+}],
+"loop": 1,
+"name": &"disappointed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_s8pop")
+}],
+"loop": 1,
+"name": &"embarrassed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_wamjd")
+}],
+"loop": 1,
+"name": &"excitable",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_fc4vu")
+}],
+"loop": 1,
+"name": &"fear",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_8gabf")
+}],
+"loop": 1,
+"name": &"injured50_default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_hou1g")
+}],
+"loop": 1,
+"name": &"injured50_fear",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_jtiyy")
+}],
+"loop": 1,
+"name": &"injured75",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_73wii")
+}],
+"loop": 1,
+"name": &"injured_fading",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_ev27b")
+}],
+"loop": 1,
+"name": &"ponder",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"sad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_s7imo")
+}],
+"loop": 1,
+"name": &"shock",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"sinister_mad",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"sinister_smug",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"smug",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_j8mfn")
+}],
+"loop": 1,
+"name": &"upset",
+"speed": 5.0
+}]
+
+[node name="HeatherPortrait" unique_id=2014865688 instance=ExtResource("1_0gb67")]
+character_name = "Heather"
+
+[node name="Character" parent="." index="0" unique_id=1579253741]
+sprite_frames = SubResource("SpriteFrames_ab8kx")
+animation = &"upset"

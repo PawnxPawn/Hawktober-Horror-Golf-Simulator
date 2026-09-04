@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://bfh28n0fd0nsd"]
+
+[ext_resource type="PackedScene" uid="uid://betcir7h6j6db" path="res://Src/Scenes/Character/BasePortrait.tscn" id="1_nmrjq"]
+[ext_resource type="Texture2D" uid="uid://bctmr8kmddu5v" path="res://Assets/Characters/PAElroy/PAElroyAngry.png" id="2_htba7"]
+[ext_resource type="Texture2D" uid="uid://dki6sxaq1iloh" path="res://Assets/Characters/PAElroy/PAElroyDefault.png" id="3_8upu8"]
+[ext_resource type="Texture2D" uid="uid://bs8kdw14vaj1e" path="res://Assets/Characters/PAElroy/PAElroySad.png" id="4_ue22y"]
+[ext_resource type="Texture2D" uid="uid://cx215ll3pa1hk" path="res://Assets/Characters/PAElroy/PAElroyShock.png" id="5_5bo2t"]
+[ext_resource type="Texture2D" uid="uid://v5ssdcmqhyef" path="res://Assets/Characters/PAElroy/PAElroySinisterMad.png" id="6_dumai"]
+[ext_resource type="Texture2D" uid="uid://xtfr6kat1o81" path="res://Assets/Characters/PAElroy/PAElroySinisterSmug.png" id="7_1kq04"]
+[ext_resource type="Texture2D" uid="uid://c50ns7ayw6wlu" path="res://Assets/Characters/PAElroy/PAElroySmug.png" id="8_r6bl0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xo0nl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_htba7")
+}],
+"loop": 1,
+"name": &"angry",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"confident",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"curious",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 0,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8upu8")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"disappointed",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"embarrassed",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"excitable",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"fear",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"injured50_default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"injured50_fear",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"injured75",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"injured_fading",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"ponder",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ue22y")
+}],
+"loop": 1,
+"name": &"sad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_5bo2t")
+}],
+"loop": 1,
+"name": &"shock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_dumai")
+}],
+"loop": 1,
+"name": &"sinister_mad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_1kq04")
+}],
+"loop": 1,
+"name": &"sinister_smug",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_r6bl0")
+}],
+"loop": 1,
+"name": &"smug",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"upset",
+"speed": 5.0
+}]
+
+[node name="PAElroyPortrait" unique_id=2014865688 instance=ExtResource("1_nmrjq")]
+
+[node name="Character" parent="." index="0" unique_id=1579253741]
+sprite_frames = SubResource("SpriteFrames_xo0nl")
+animation = &"ponder"
