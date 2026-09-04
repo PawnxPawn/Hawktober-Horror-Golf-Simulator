@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://du6b2fvmmn1gt"]
+
+[ext_resource type="PackedScene" uid="uid://bkoj2got756rr" path="res://Src/Scenes/GolfBall/Golfball.tscn" id="1_xessk"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_17p5i"]
+
+[node name="testmap" type="Node2D" unique_id=708725927]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=686974851]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1900178118]
+shape = SubResource("WorldBoundaryShape2D_17p5i")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=546165813]
+
+[node name="Golfball" parent="." unique_id=2029069494 instance=ExtResource("1_xessk")]
+position = Vector2(0, -52)
