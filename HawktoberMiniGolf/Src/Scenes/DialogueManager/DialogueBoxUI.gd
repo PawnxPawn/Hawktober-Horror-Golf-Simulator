@@ -35,3 +35,7 @@ func skip_to_end() -> void:
 		_tween.kill()
 		dialogue_text.visible_ratio = 1.0
 		_on_line_finished()
+
+
+func is_typing() -> bool:
+	return _tween != null and _tween.is_running()

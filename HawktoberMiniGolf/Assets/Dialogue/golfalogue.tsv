@@ -1,6 +1,6 @@
 CODENAME	EXPRESSION	DIALOGUE
 Opening1	PAElroy_angry	I am [color=red]Elroy[/color] and I am angry!
 Opening2	Heather_shock	Oh my gosh you are angry!
-End1	PAElroy_angry	Why is this playing?!
+End1	PAElroy_angry	Why is this playing?! This messages is longer then normal for testing the skip to the end function.
 End2	Heather_dead	...
 End3	PAElroy_angry	Oh, Nevermind.

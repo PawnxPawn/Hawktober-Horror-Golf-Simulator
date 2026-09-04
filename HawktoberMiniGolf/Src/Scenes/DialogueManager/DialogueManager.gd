@@ -28,7 +28,10 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Interact"):
-		advance()
+		if dialogue_box.is_typing():
+			dialogue_box.skip_to_end()
+		else:
+			advance()
 
 
 func play_scene(scene_name: String) -> void:
