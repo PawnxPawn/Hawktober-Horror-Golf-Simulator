@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bsm0u0h2wm8wd"]
+
+[ext_resource type="Texture2D" uid="uid://cm7bd7r5jnr5q" path="res://Src/art/hole.png" id="1_n1ri3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17p5i"]
+size = Vector2(20, 6)
+
+[node name="GolfHole" type="Area2D" unique_id=877710855]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=226478769]
+position = Vector2(1, -47)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_n1ri3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=438405396]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_17p5i")

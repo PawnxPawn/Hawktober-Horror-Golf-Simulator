@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 DebugRegistry="*uid://c22yu1wmpy3jh"
 DebugOverlay="*uid://mublw3gdgtbe"
 Services="*uid://dh8h4635w4pvn"
+Scoremanager="*uid://c43oiphneg3xa"
 
 [display]
 

@@ -12,7 +12,6 @@ var angle: float = 0.0
 var ball_state: BallState = BallState.IDLE
 var ball_radius: float = 10.0
 
-var hit_count: int = 0
 var power_increment: float = 5.0 
 
 func _process(delta):
@@ -39,27 +38,38 @@ func  inputs(delta):
 		if ball_state == BallState.IS_CHARGING:
 			launch_ball()
 			ball_state = BallState.HIT
-			hit_count += 1
+			Scoremanager.add_hit()
 	
 	# Power control with up/down arrows
 	if ball_state == BallState.IDLE || ball_state == BallState.IS_CHARGING    and not is_ball_moving:
 		if Input.is_action_pressed("Up"):
+			rotation = 0 
+			linear_velocity = Vector2.ZERO
 			ball_state = BallState.IS_CHARGING
 			power = min(power + power_increment, max_power)
 		if Input.is_action_pressed("Down"):
+			rotation = 0 
+			linear_velocity = Vector2.ZERO
 			ball_state = BallState.IS_CHARGING
 			power = max(power - power_increment, 0.0)
-	
-	# Angle control with arrow keys
-	if Input.is_action_pressed("right"):
-		angle += 2.0
-	if Input.is_action_pressed("left"):
-		angle -= 2.0
+		
+		# Angle control with arrow keys
+		if Input.is_action_pressed("right"):
+			rotation = 0 
+			angle += 2.0
+			linear_velocity = Vector2.ZERO
+		if Input.is_action_pressed("left"):
+			rotation = 0 
+			angle -= 2.0
+			linear_velocity = Vector2.ZERO
 
 func launch_ball():
 	var radians = deg_to_rad(angle)
 	var force = Vector2(cos(radians), sin(radians)) * (power / max_power) * 1000
 	linear_velocity = force
+
+
+
 
 
 
@@ -89,21 +99,43 @@ func draw_instructions():
 	var font = get_tree().root.get_theme_default_font()
 	var font_size = get_tree().root.get_theme_default_font_size()
 	
+	# Draw score box (top right)
+	draw_score_display(font, font_size)
+	
 	match ball_state:
 		BallState.IS_CHARGING:
 			draw_string(font, Vector2(20, 40), "Power: %.0f%%" % (power / max_power * 100), 
 				HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, Color.WHITE)
 			draw_string(font, Vector2(20, 70), "Angle: %.0f°" % angle, 
 				HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, Color.WHITE)
-			draw_string(font, Vector2(20, 100), "Hits: %d" % hit_count, 
+			draw_string(font, Vector2(20, 100), "Hits: %d / Par %d" % [Scoremanager.hit_count, Scoremanager.current_par], 
 				HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, Color.YELLOW)
 		BallState.IDLE:
 			draw_string(font, Vector2(20, 40), "SPACE: hit  |  ↑/↓: Power  |  ←/→: Angle  ", 
 				HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, Color.WHITE)
-			draw_string(font, Vector2(20, 70), "Hits: %d" % hit_count, 
+			draw_string(font, Vector2(20, 70), "Hits: %d / Par %d" % [Scoremanager.hit_count, Scoremanager.current_par], 
 				HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, Color.YELLOW)
 		BallState.HIT:
 			var speed = linear_velocity.length()
 			if speed > 2:
 				draw_string(font, Vector2(20, 40), "Ball Speed: %.0f" % speed, 
 					HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, Color.WHITE)
+
+
+func draw_score_display(font: Font, font_size: int):
+	var score_rating = Scoremanager.get_score_rating()
+	var score_diff = Scoremanager.get_score_difference()
+	var score_color = Scoremanager.get_score_color()
+	
+	# Display in top-right corner
+	var screen_width = get_viewport_rect().size.x
+	var x_pos = screen_width - 200
+	
+	draw_string(font, Vector2(x_pos, 40), "Par: %d" % Scoremanager.current_par, 
+		HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, Color.WHITE)
+	draw_string(font, Vector2(x_pos, 70), score_rating, 
+		HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, score_color)
+	if Scoremanager.hit_count > 0:
+		var score_str = "%+d" % score_diff if score_diff != 0 else "E"
+		draw_string(font, Vector2(x_pos, 100), "Score: %s" % score_str, 
+			HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, score_color)
