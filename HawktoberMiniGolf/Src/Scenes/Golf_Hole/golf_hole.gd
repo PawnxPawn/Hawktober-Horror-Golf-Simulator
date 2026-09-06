@@ -26,7 +26,7 @@ func _process(delta):
 
 
 func _on_ball_entered(area):
-	if area is RigidBody2D and area.name == "GolfBall":
+	if area is RigidBody2D:
 		_complete_hole()
 
 

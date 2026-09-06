@@ -15,3 +15,12 @@ texture = ExtResource("1_n1ri3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=438405396]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_17p5i")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=439366618]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=674207077]
+position = Vector2(1, 0)
+polygon = PackedVector2Array(-15, 1, -11, 1, -11, -5)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=2123016605]
+polygon = PackedVector2Array(15, 1, 10, 1, 10, -5)
