@@ -81,7 +81,7 @@ func _add_action(action_name: StringName, keycode: Key) -> void:
 
 
 func _remove_inputs() -> void:
-	_remove_action(&"Debug")
+	_remove_action(&"DebugMenu")
 	_remove_action(&"DebugTerminal")
 
 
@@ -209,12 +209,6 @@ func _register_default_commands() -> void:
 	register_command("aliases", Callable(), "aliases - lists defined shortcuts", "shortcuts")
 	
 	# Layout / appearance
-	register_command("panel_pos", _cmd_panel_pos, "panel_pos [panel: stats|terminal] [x] [y] - sets a panel's position precisely", "layout")
-	register_command("panel_size", _cmd_panel_size, "panel_size [panel: stats|terminal] [width] [height] - sets a panel's size precisely", "layout")
-	register_command("term_font_size", _cmd_term_font_size, "term_font_size [size] - sets the terminal's output/input font size", "layout")
-	register_command("stats_font_size", _cmd_stats_font_size, "stats_font_size [size] - sets the stats panel's label font size", "layout")
-	register_command("term_opacity", _cmd_term_opacity, "term_opacity [0.0-1.0] - sets the terminal's background opacity", "layout")
-	register_command("stats_opacity", _cmd_stats_opacity, "stats_opacity [0.0-1.0] - sets the stats panel's background opacity", "layout")
 	register_command("reset_layout", _cmd_reset_layout, "reset_layout - restores all panels to their default positions", "layout")
 	register_command("reset_appearance", _cmd_reset_appearance, "reset_appearance - restores default font size and opacity", "layout")
 	
