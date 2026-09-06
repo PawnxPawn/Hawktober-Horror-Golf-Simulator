@@ -25,15 +25,10 @@ func  inputs(delta):
 	# Check if ball is moving
 	var is_ball_moving = linear_velocity.length() > 2
 
-	
 	# Reset state when ball stops
 	if ball_state == BallState.HIT and not is_ball_moving:
 		ball_state = BallState.IDLE
 	
-	if ball_state == BallState.IDLE :
-		linear_velocity = Vector2.ZERO
-		rotation = 0 
-
 	if Input.is_action_just_released("Hitball"):
 		if ball_state == BallState.IS_CHARGING:
 			launch_ball()
@@ -42,26 +37,21 @@ func  inputs(delta):
 	
 	# Power control with up/down arrows
 	if ball_state == BallState.IDLE || ball_state == BallState.IS_CHARGING    and not is_ball_moving:
+		rotation = 0 
+		linear_velocity = Vector2.ZERO
+	
 		if Input.is_action_pressed("Up"):
-			rotation = 0 
-			linear_velocity = Vector2.ZERO
 			ball_state = BallState.IS_CHARGING
 			power = min(power + power_increment, max_power)
 		if Input.is_action_pressed("Down"):
-			rotation = 0 
-			linear_velocity = Vector2.ZERO
 			ball_state = BallState.IS_CHARGING
 			power = max(power - power_increment, 0.0)
 		
 		# Angle control with arrow keys
 		if Input.is_action_pressed("right"):
-			rotation = 0 
 			angle += 2.0
-			linear_velocity = Vector2.ZERO
 		if Input.is_action_pressed("left"):
-			rotation = 0 
 			angle -= 2.0
-			linear_velocity = Vector2.ZERO
 
 func launch_ball():
 	var radians = deg_to_rad(angle)
