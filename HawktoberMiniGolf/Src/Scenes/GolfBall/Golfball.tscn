@@ -18,3 +18,7 @@ shape = SubResource("CircleShape2D_17p5i")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=86968464]
 texture = ExtResource("1_b7im2")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1761749892]
+limit_smoothed = true
+position_smoothing_enabled = true
