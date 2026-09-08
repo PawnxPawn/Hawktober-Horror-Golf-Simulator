@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://bsm0u0h2wm8wd" path="res://Src/Scenes/Golf_Hole/golf_hole.tscn" id="1_8je1w"]
 [ext_resource type="PackedScene" uid="uid://bkoj2got756rr" path="res://Src/Scenes/GolfBall/Golfball.tscn" id="1_xessk"]
-[ext_resource type="Script" uid="uid://cwbudmsbo10k3" path="res://Src/Scenes/Golf_Hole/golf_hole.gd" id="2_n3344"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_17p5i"]
 
@@ -15,7 +14,6 @@ shape = SubResource("WorldBoundaryShape2D_17p5i")
 
 [node name="GolfHole" parent="." unique_id=877710855 instance=ExtResource("1_8je1w")]
 position = Vector2(469, -1)
-script = ExtResource("2_n3344")
 
 [node name="GolfBall" parent="." unique_id=2029069494 instance=ExtResource("1_xessk")]
-position = Vector2(470, -27)
+position = Vector2(1, -20)
