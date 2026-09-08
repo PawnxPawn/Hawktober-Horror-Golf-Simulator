@@ -6,6 +6,7 @@ extends Area2D
 
 var score_popup_visible: bool = false
 var score_popup_timer: float = 0.0
+var ball_reference: RigidBody2D = null
 
 signal hole_completed_display
 
@@ -13,7 +14,9 @@ func _ready():
 	# Set the initial par for this hole
 	Scoremanager.set_par(par)
 	print("Hole %d ready (Par %d)" % [hole_number, par])
-
+	
+	# Connect the area entered signal
+	area_entered.connect(_on_ball_entered)
 
 
 func _process(delta):
@@ -27,6 +30,7 @@ func _process(delta):
 
 func _on_ball_entered(area):
 	if area is RigidBody2D:
+		ball_reference = area
 		_complete_hole()
 
 
@@ -36,6 +40,10 @@ func _complete_hole():
 	
 	# Mark hole as complete
 	Scoremanager.complete_hole()
+	
+	# Signal the ball that hole is complete (prevents further hitting)
+	if ball_reference and ball_reference.has_method("complete_hole"):
+		ball_reference.complete_hole()
 	
 	# Show score popup
 	show_score_popup()
@@ -92,6 +100,7 @@ func setup_next_hole(new_par: int, new_hole_number: int = 1):
 	Scoremanager.set_par(par)
 	Scoremanager.reset_hole()
 	score_popup_visible = false
+	ball_reference = null
 	print("Hole %d setup (Par %d)" % [hole_number, par])
 
 
@@ -99,5 +108,6 @@ func setup_next_hole(new_par: int, new_hole_number: int = 1):
 func reset_hole():
 	Scoremanager.reset_hole()
 	score_popup_visible = false
+	ball_reference = null
 	queue_redraw()
 	print("Hole %d reset" % hole_number)

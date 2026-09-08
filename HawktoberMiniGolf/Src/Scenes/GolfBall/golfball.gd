@@ -3,7 +3,8 @@ extends RigidBody2D
 enum BallState {
 	IDLE,
 	IS_CHARGING,
-	HIT
+	HIT,
+	HOLE_COMPLETE
 }
 
 var power: float = 0.0
@@ -29,6 +30,10 @@ func  inputs(delta):
 	if ball_state == BallState.HIT and not is_ball_moving:
 		ball_state = BallState.IDLE
 	
+	# Don't allow any input if hole is complete
+	if ball_state == BallState.HOLE_COMPLETE:
+		return
+	
 	if Input.is_action_just_released("Hitball"):
 		if ball_state == BallState.IS_CHARGING:
 			launch_ball()
@@ -36,7 +41,7 @@ func  inputs(delta):
 			Scoremanager.add_hit()
 	
 	# Power control with up/down arrows
-	if ball_state == BallState.IDLE || ball_state == BallState.IS_CHARGING    and not is_ball_moving:
+	if ball_state == BallState.IDLE || ball_state == BallState.IS_CHARGING and not is_ball_moving:
 		rotation = 0 
 		linear_velocity = Vector2.ZERO
 	
@@ -59,9 +64,11 @@ func launch_ball():
 	linear_velocity = force
 
 
-
-
-
+func complete_hole():
+	"""Called when the ball enters the hole"""
+	ball_state = BallState.HOLE_COMPLETE
+	linear_velocity = Vector2.ZERO
+	queue_redraw()
 
 
 func _draw():
@@ -91,6 +98,10 @@ func draw_instructions():
 	
 	# Draw score box (top right)
 	draw_score_display(font, font_size)
+	
+	# Don't show instructions if hole is complete
+	if ball_state == BallState.HOLE_COMPLETE:
+		return
 	
 	match ball_state:
 		BallState.IS_CHARGING:

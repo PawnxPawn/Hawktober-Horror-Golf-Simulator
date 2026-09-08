@@ -18,6 +18,4 @@ position = Vector2(469, -1)
 script = ExtResource("2_n3344")
 
 [node name="GolfBall" parent="." unique_id=2029069494 instance=ExtResource("1_xessk")]
-position = Vector2(0, -8)
-
-[connection signal="area_entered" from="GolfHole" to="GolfHole" method="_on_ball_entered"]
+position = Vector2(470, -27)
