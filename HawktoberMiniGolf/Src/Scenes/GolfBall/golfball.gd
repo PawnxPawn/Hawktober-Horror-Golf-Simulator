@@ -131,11 +131,7 @@ func draw_instructions():
 				HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, Color.WHITE)
 			draw_string(font, Vector2(20, 70), "Hits: %d / Par %d" % [Scoremanager.hit_count, Scoremanager.current_par],
 				HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, Color.YELLOW)
-		BallState.HIT:
-			var speed = linear_velocity.length()
-			if speed > 2:
-				draw_string(font, Vector2(20, 40), "Ball Speed: %.0f" % speed,
-					HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, Color.WHITE)
+
 
 
 func draw_score_display(font: Font, font_size: int):

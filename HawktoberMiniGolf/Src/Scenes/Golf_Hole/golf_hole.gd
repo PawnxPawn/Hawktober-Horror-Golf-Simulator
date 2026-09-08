@@ -67,15 +67,6 @@ func draw_score_popup():
 	var score_diff = Scoremanager.get_score_difference()
 	var score_color = Scoremanager.get_score_color()
 
-	# Semi-transparent background
-	var popup_width = 250
-	var popup_height = 120
-	draw_rect(Rect2(-popup_width / 2.0, -popup_height / 2.0, popup_width, popup_height),
-		Color.BLACK.lerp(Color.TRANSPARENT, 0.3))
-
-	# Border
-	draw_rect(Rect2(-popup_width / 2.0, -popup_height / 2.0, popup_width, popup_height),
-		score_color, false, 3.0)
 
 	# Text
 	draw_string(font, Vector2(-100, -40), rating,
