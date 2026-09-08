@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" uid="uid://lqoaqs4femrl" path="res://Src/Scenes/Character/BasePortrait.gd" id="1_vv2vg"]
 [ext_resource type="Texture2D" uid="uid://dn2ic5p0d2tbv" path="res://Assets/Characters/GolfHeather/GolfHeatherDead2.png" id="2_cpq4m"]
-[ext_resource type="Texture2D" uid="uid://da77f11nkdwyv" path="res://Assets/Characters/GolfHeather/HeatherPlaceholder.png" id="2_muy1m"]
+[ext_resource type="Texture2D" uid="uid://c7gmmnkk705i5" path="res://Assets/Dialogue/Names/Heather.png" id="2_e35x2"]
 [ext_resource type="Texture2D" uid="uid://ctujutlswe3q4" path="res://Assets/Characters/PAElroy/PAElroyPlaceholder.png" id="3_bilvn"]
 [ext_resource type="Texture2D" uid="uid://gc7tgvakxi1d" path="res://Assets/Characters/GolfHeather/GolfHeatherDead3.png" id="3_e35x2"]
 [ext_resource type="Texture2D" uid="uid://hx21xpgjyypv" path="res://Assets/Characters/GolfHeather/GolfHeatherDead4.png" id="4_uk4e8"]
+[ext_resource type="Texture2D" uid="uid://bdxx0rakwi3p0" path="res://Assets/Characters/GolfHeather/GolfHeatherAngry.png" id="7_e35x2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmsvc"]
 atlas = ExtResource("2_cpq4m")
@@ -52,10 +53,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_muy1m")
+"texture": ExtResource("3_bilvn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_bilvn")
+"texture": ExtResource("7_e35x2")
 }],
 "loop": 1,
 "name": &"default",
@@ -142,8 +143,15 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_vv2vg")
 
+[node name="NamePlate" type="TextureRect" parent="." unique_id=594390989]
+layout_mode = 0
+offset_right = 1128.0
+offset_bottom = 840.0
+texture = ExtResource("2_e35x2")
+
 [node name="Character" type="AnimatedSprite2D" parent="." unique_id=1579253741]
-position = Vector2(171, 527)
-scale = Vector2(0.5, 0.5)
+position = Vector2(878, 596)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_w45gy")
 autoplay = "default"
+frame = 1

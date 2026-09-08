@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://betcir7h6j6db" path="res://Src/Scenes/Character/BasePortrait.tscn" id="1_nmrjq"]
 [ext_resource type="Texture2D" uid="uid://bctmr8kmddu5v" path="res://Assets/Characters/PAElroy/PAElroyAngry.png" id="2_htba7"]
 [ext_resource type="Texture2D" uid="uid://dki6sxaq1iloh" path="res://Assets/Characters/PAElroy/PAElroyDefault.png" id="3_8upu8"]
+[ext_resource type="Texture2D" uid="uid://cihp7hf0f6e1f" path="res://Assets/Dialogue/Names/Elroy.png" id="3_ue22y"]
 [ext_resource type="Texture2D" uid="uid://bs8kdw14vaj1e" path="res://Assets/Characters/PAElroy/PAElroySad.png" id="4_ue22y"]
 [ext_resource type="Texture2D" uid="uid://cx215ll3pa1hk" path="res://Assets/Characters/PAElroy/PAElroyShock.png" id="5_5bo2t"]
 [ext_resource type="Texture2D" uid="uid://v5ssdcmqhyef" path="res://Assets/Characters/PAElroy/PAElroySinisterMad.png" id="6_dumai"]
@@ -135,8 +136,14 @@ animations = [{
 
 [node name="PAElroyPortrait" unique_id=2014865688 instance=ExtResource("1_nmrjq")]
 character_name = "PAElroy"
+character_name_print = "PA Elroy"
 
-[node name="Character" parent="." index="0" unique_id=1579253741]
-position = Vector2(226, 469)
+[node name="NamePlate" parent="." index="0" unique_id=594390989]
+texture = ExtResource("3_ue22y")
+
+[node name="Character" parent="." index="1" unique_id=1579253741]
+position = Vector2(869, 565)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_xo0nl")
-animation = &"sinister_mad"
+animation = &"angry"
+frame = 0

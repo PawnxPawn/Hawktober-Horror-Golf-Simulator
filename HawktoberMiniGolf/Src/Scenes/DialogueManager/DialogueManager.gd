@@ -59,7 +59,7 @@ func advance() -> void:
 	if portrait:
 		portrait.set_mood(line.mood)
 	
-	dialogue_box.display_line(line.character, line.text)
+	dialogue_box.display_line(portrait.character_name_print, line.text)
 	current_line_index += 1
 
 

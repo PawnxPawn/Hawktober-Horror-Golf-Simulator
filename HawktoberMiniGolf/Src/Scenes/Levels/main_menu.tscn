@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://c7xr7pjq40o2g"]
 
 [ext_resource type="Script" uid="uid://n41tcviwxrsk" path="res://Src/Scenes/Levels/MainMenu.gd" id="1_x3rag"]
+[ext_resource type="FontFile" uid="uid://crdgsvgl7q4m7" path="res://Assets/Fonts/Gabriela-Regular.ttf" id="2_rc2hk"]
+
+[sub_resource type="FontVariation" id="FontVariation_4ywfb"]
+base_font = ExtResource("2_rc2hk")
 
 [node name="MainMenu" type="Control" unique_id=521451885]
 layout_mode = 3
@@ -18,7 +22,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 27
+theme_override_fonts/font = SubResource("FontVariation_4ywfb")
+theme_override_font_sizes/font_size = 32
 text = "Hawktober
 Mini Golf
 Simulator"

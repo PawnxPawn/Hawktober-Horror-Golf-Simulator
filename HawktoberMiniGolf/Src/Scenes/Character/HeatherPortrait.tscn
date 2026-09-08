@@ -191,8 +191,10 @@ animations = [{
 
 [node name="HeatherPortrait" unique_id=2014865688 instance=ExtResource("1_0gb67")]
 character_name = "Heather"
+character_name_print = "Heather"
 
-[node name="Character" parent="." index="0" unique_id=1579253741]
-position = Vector2(226, 469)
+[node name="Character" parent="." index="1" unique_id=1579253741]
 sprite_frames = SubResource("SpriteFrames_ab8kx")
-animation = &"upset"
+animation = &"angry"
+frame = 0
+frame_progress = 0.53197056
