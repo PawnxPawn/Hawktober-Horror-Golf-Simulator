@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3xubnsyev44l"
-path="res://.godot/imported/ball.png-7d2022735c0e5e58d72b4119ebc1515c.ctex"
+uid="uid://cj4gm7hpcoip7"
+path="res://.godot/imported/hazard_water.png-10e281c9ba27f2b21688f911af203012.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Src/art/ball.png"
-dest_files=["res://.godot/imported/ball.png-7d2022735c0e5e58d72b4119ebc1515c.ctex"]
+source_file="res://Src/art/flgof/hazard_water.png"
+dest_files=["res://.godot/imported/hazard_water.png-10e281c9ba27f2b21688f911af203012.ctex"]
 
 [params]
 

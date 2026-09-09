@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bsm0u0h2wm8wd" path="res://Src/Scenes/Golf_Hole/golf_hole.tscn" id="1_8je1w"]
 [ext_resource type="PackedScene" uid="uid://bkoj2got756rr" path="res://Src/Scenes/GolfBall/Golfball.tscn" id="1_xessk"]
+[ext_resource type="Texture2D" uid="uid://ck3le5wt1sjix" path="res://Src/art/flgof/background_gameplay_only.png" id="3_8je1w"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_17p5i"]
 
@@ -17,3 +18,7 @@ position = Vector2(469, -1)
 
 [node name="GolfBall" parent="." unique_id=2029069494 instance=ExtResource("1_xessk")]
 position = Vector2(1, -20)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=681978117]
+z_index = -10
+texture = ExtResource("3_8je1w")

@@ -42,13 +42,13 @@ func get_score_rating() -> String:
 	
 	match score_difference:
 		-3:
-			return "Albatross! 🦅"
+			return "Albatross!"
 		-2:
-			return "Eagle! 🦅"
+			return "Eagle!"
 		-1:
-			return "Birdie! 🐦"
+			return "Birdie!"
 		0:
-			return "Par ✓"
+			return "Par"
 		1:
 			return "Bogey"
 		2:

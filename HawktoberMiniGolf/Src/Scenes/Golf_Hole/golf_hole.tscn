@@ -1,30 +1,38 @@
 [gd_scene format=3 uid="uid://bsm0u0h2wm8wd"]
 
 [ext_resource type="Script" uid="uid://cwbudmsbo10k3" path="res://Src/Scenes/Golf_Hole/golf_hole.gd" id="1_detsw"]
-[ext_resource type="Texture2D" uid="uid://cm7bd7r5jnr5q" path="res://Src/art/hole.png" id="1_n1ri3"]
+[ext_resource type="Texture2D" uid="uid://dedfnro8l31km" path="res://Src/art/flgof/object_flag.png" id="2_detsw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17p5i"]
-size = Vector2(20, 6)
+size = Vector2(30, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pg6nb"]
+size = Vector2(4, 16)
 
 [node name="GolfHole" type="Area2D" unique_id=877710855]
 script = ExtResource("1_detsw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=226478769]
-position = Vector2(1, -47)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_n1ri3")
+position = Vector2(2, -39.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_detsw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=438405396]
-position = Vector2(0, -2)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_17p5i")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=439366618]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=110738441]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=674207077]
-position = Vector2(1, 0)
-polygon = PackedVector2Array(-15, 1, -11, 1, -11, -5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1673176092]
+position = Vector2(0, -34)
+shape = SubResource("RectangleShape2D_pg6nb")
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=2123016605]
-polygon = PackedVector2Array(15, 1, 10, 1, 10, -5)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1912192591]
+position = Vector2(0, -61)
+shape = SubResource("RectangleShape2D_pg6nb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1860566603]
+position = Vector2(0, -92)
+shape = SubResource("RectangleShape2D_pg6nb")
 
 [connection signal="area_entered" from="." to="." method="_on_ball_entered"]

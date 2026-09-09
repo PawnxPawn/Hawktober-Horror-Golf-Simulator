@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cytb2bv5i1564"]
+
+[ext_resource type="Script" uid="uid://dlqbtrcnaiu0t" path="res://Src/Scenes/UI/HUD.gd" id="1_q58o2"]
+[ext_resource type="Texture2D" uid="uid://dxvfknhad45ux" path="res://Src/art/flgof/ui_angle.png" id="2_ogerq"]
+[ext_resource type="Texture2D" uid="uid://bu0y8opvww85e" path="res://Src/art/flgof/ui_health.png" id="3_4a1jl"]
+
+[node name="Control" type="CanvasLayer" unique_id=1100805222 node_paths=PackedStringArray("ball")]
+script = ExtResource("1_q58o2")
+ball = NodePath("")
+protractor_texture = ExtResource("2_ogerq")
+
+[node name="Control" type="Control" parent="." unique_id=886671541]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Control" unique_id=587497106]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 830.0
+offset_top = -140.0
+offset_right = 1082.0
+offset_bottom = 130.0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_4a1jl")
+
+[node name="Label" type="Label" parent="Control" unique_id=323410311]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+horizontal_alignment = 1
