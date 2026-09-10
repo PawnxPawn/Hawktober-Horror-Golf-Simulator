@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bsm0u0h2wm8wd"]
 
-[ext_resource type="Script" uid="uid://cwbudmsbo10k3" path="res://Src/Scenes/Golf_Hole/golf_hole.gd" id="1_detsw"]
+[ext_resource type="Script" uid="uid://cwbudmsbo10k3" path="res://Src/Scenes/Levels/Objs/Golf_Hole/golf_hole.gd" id="1_detsw"]
 [ext_resource type="Texture2D" uid="uid://dedfnro8l31km" path="res://Src/art/flgof/object_flag.png" id="2_detsw"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17p5i"]
 size = Vector2(30, 10)

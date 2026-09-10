@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c6y0xk8bxp5s5"]
+
+[ext_resource type="Script" uid="uid://bhupj327t74pn" path="res://Src/Scenes/Levels/Hazards/sandtrap.gd" id="1_iwfk5"]
+[ext_resource type="Texture2D" uid="uid://b5f1rxeumueuj" path="res://Src/art/flgof/hazard_sand.png" id="2_h56us"]
+
+[node name="Sandtrap" type="Area2D" unique_id=1652040403]
+script = ExtResource("1_iwfk5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=768073177]
+position = Vector2(1, 8)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h56us")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=475137167]
+polygon = PackedVector2Array(-133, 7, -129, -9, -122, -18, -25, -16, 4, -10, 23, -10, 37, -7, 70, -4, 116, -5, 122, -1, 126, 9, 132, 12, 135, 20, 131, 29, 121, 32, 106, 29, 81, 34, 54, 34, 37, 22, -14, 22, -65, 32, -85, 17, -121, 18, -129, 15)

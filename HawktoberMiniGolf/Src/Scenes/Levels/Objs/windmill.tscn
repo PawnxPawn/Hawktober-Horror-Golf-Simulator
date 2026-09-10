@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bj1kweol2imt1"]
+
+[ext_resource type="Texture2D" uid="uid://dp1m587sqfm5k" path="res://Src/art/flgof/hazard_windmill.png" id="1_d6p43"]
+
+[node name="Windmill" type="StaticBody2D" unique_id=1290646623]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=238693284]
+position = Vector2(-0.99999994, -116)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_d6p43")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=161957651]
+position = Vector2(0, 1)
+polygon = PackedVector2Array(52, -71, 47, -71, 47, -82, 36, -104, 36, -149, 41, -164, 62, -177, 47, -177, 40, -187, 26, -187, 4, -219, -6, -219, -33, -182, -48, -182, -48, -177, -64, -177, -43, -167, -44, -152, -43, -103, -49, -87, -48, -71, -54, -71, -54, -30, -37, -30, -36, -67, 34, -67, 35, -32, 52, -32)

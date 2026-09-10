@@ -15,6 +15,25 @@ var ball_radius: float = 10.0
 
 var power_increment: float = 5.0
 
+# --- Hazard / reset support -------------------------------------------------
+# The last spot the ball was resting on safe ground, captured the moment it was
+# hit. If the ball ends up in water or out of bounds, we drop it back here.
+var last_safe_position: Vector2 = Vector2.ZERO
+
+# We remember the ball's normal damping so the sand trap can temporarily raise
+# it (to slow the ball down) and then restore it when the ball leaves the sand.
+var default_linear_damp: float = 0.0
+
+# Add a +1 penalty stroke when the ball lands in water / goes out of bounds.
+# Set to false in the Inspector if you don't want the penalty.
+@export var hazard_penalty: bool = true
+
+
+func _ready():
+	# Start with a valid safe position in case the very first shot goes wrong.
+	last_safe_position = global_position
+	default_linear_damp = linear_damp
+
 
 func _process(delta):
 	inputs(delta)
@@ -42,6 +61,7 @@ func inputs(delta):
 
 	# Power control with up/down arrows
 	if (ball_state == BallState.IDLE or ball_state == BallState.IS_CHARGING) and not is_ball_moving:
+		last_safe_position = global_position
 		rotation = 0
 		linear_velocity = Vector2.ZERO
 
@@ -74,6 +94,33 @@ func complete_hole():
 	freeze = true
 
 
+# --- Called by the Water / Out-of-bounds hazard -----------------------------
+func return_to_safe_position():
+	# Stop the ball dead and drop it back where it was last hit from.
+	linear_velocity = Vector2.ZERO
+	angular_velocity = 0.0
+	rotation = 0.0
+	global_position = last_safe_position
+
+	# Ready to be hit again.
+	ball_state = BallState.IDLE
+	power = 0.0
+
+	if hazard_penalty:
+		Scoremanager.add_hit()  # +1 penalty stroke.
+
+
+# --- Called by the Sand trap ------------------------------------------------
+func enter_sand(sand_damp: float):
+	# Crank up damping so the ball slows quickly, like real sand.
+	linear_damp = sand_damp
+
+
+func exit_sand():
+	# Back to normal rolling.
+	linear_damp = default_linear_damp
+
+
 # Optional helper if you reset/reuse the same ball for the next hole.
 func reset_ball(start_position: Vector2 = global_position):
 	freeze = false
@@ -82,3 +129,4 @@ func reset_ball(start_position: Vector2 = global_position):
 	linear_velocity = Vector2.ZERO
 	angular_velocity = 0.0
 	global_position = start_position
+	last_safe_position = start_position
