@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dqpsguey7fulm"]
+
+[ext_resource type="Script" uid="uid://hx1rsv0jfhd3" path="res://Src/Scenes/Levels/Hazards/Resethazard.gd" id="1_ixdf7"]
+
+[node name="Out of bounds" type="Area2D" unique_id=2002850552]
+script = ExtResource("1_ixdf7")

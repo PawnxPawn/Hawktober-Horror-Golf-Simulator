@@ -9,35 +9,26 @@
 [ext_resource type="PackedScene" uid="uid://bj1kweol2imt1" path="res://Src/Scenes/Levels/Objs/windmill.tscn" id="6_ew4rs"]
 [ext_resource type="PackedScene" uid="uid://8ijuq5fhakmg" path="res://Src/Scenes/Levels/Hazards/bounse_pad.tscn" id="6_w1iah"]
 [ext_resource type="Script" uid="uid://0hriblou2gxs" path="res://Src/Scenes/Levels/Hazards/bounse_pad.gd" id="7_nmfrm"]
+[ext_resource type="PackedScene" uid="uid://dqpsguey7fulm" path="res://Src/Scenes/Levels/Objs/out_of_bounds.tscn" id="10_nmfrm"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_17p5i"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3sykw"]
+size = Vector2(3082, 1214)
+
 [node name="testmap" type="Node2D" unique_id=708725927]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=686974851]
+[node name="Ground" type="StaticBody2D" parent="." unique_id=686974851]
+position = Vector2(-20, 244)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1900178118]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1900178118]
 shape = SubResource("WorldBoundaryShape2D_17p5i")
 
 [node name="GolfHole" parent="." unique_id=877710855 instance=ExtResource("1_8je1w")]
 position = Vector2(883, 242)
 
-[node name="Wattertrap" parent="." unique_id=873472802 instance=ExtResource("2_n3344")]
-position = Vector2(635, 239)
-
-[node name="Sandtrap" parent="." unique_id=1652040403 instance=ExtResource("3_ypvlf")]
-position = Vector2(1082, 239)
-
 [node name="GolfBall" parent="." unique_id=2029069494 instance=ExtResource("1_xessk")]
 position = Vector2(-838, 236)
-
-[node name="Windmill" parent="." unique_id=1290646623 instance=ExtResource("6_ew4rs")]
-position = Vector2(-421, 238)
-
-[node name="BounsePad" parent="." unique_id=960168665 instance=ExtResource("6_w1iah")]
-position = Vector2(-8, 242)
-script = ExtResource("7_nmfrm")
-keep_incoming_speed = true
 
 [node name="Background3" type="Node2D" parent="." unique_id=797489812]
 
@@ -48,3 +39,35 @@ texture = ExtResource("3_8je1w")
 [node name="Background2" type="Sprite2D" parent="Background3" unique_id=1338890362]
 z_index = -10
 texture = ExtResource("6_6jqa5")
+
+[node name="Out of bounds" parent="." unique_id=2002850552 instance=ExtResource("10_nmfrm")]
+position = Vector2(1349, 222)
+hazard_name = "OutofBounds"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Out of bounds" unique_id=623616401]
+position = Vector2(1505, -285)
+shape = SubResource("RectangleShape2D_3sykw")
+
+[node name="Out of bounds2" parent="." unique_id=483896284 instance=ExtResource("10_nmfrm")]
+position = Vector2(-4357, 244)
+hazard_name = "OutofBounds"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Out of bounds2" unique_id=345015183]
+position = Vector2(1505, -285)
+shape = SubResource("RectangleShape2D_3sykw")
+
+[node name="Hazards" type="Node2D" parent="." unique_id=474899191]
+
+[node name="Wattertrap" parent="Hazards" unique_id=873472802 instance=ExtResource("2_n3344")]
+position = Vector2(635, 239)
+
+[node name="BounsePad" parent="Hazards" unique_id=960168665 instance=ExtResource("6_w1iah")]
+position = Vector2(-8, 242)
+script = ExtResource("7_nmfrm")
+keep_incoming_speed = true
+
+[node name="Sandtrap" parent="Hazards" unique_id=1652040403 instance=ExtResource("3_ypvlf")]
+position = Vector2(1082, 239)
+
+[node name="Windmill" parent="Hazards" unique_id=1290646623 instance=ExtResource("6_ew4rs")]
+position = Vector2(-421, 238)
