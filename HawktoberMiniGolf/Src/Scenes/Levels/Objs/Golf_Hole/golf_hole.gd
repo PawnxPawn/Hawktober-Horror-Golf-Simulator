@@ -1,70 +1,149 @@
-extends Area2D
+extends RigidBody2D
 
-@export var par: int = 4
-@export var hole_number: int = 1
+enum BallState {
+	IDLE,
+	IS_CHARGING,
+	HIT,
+	HOLE_COMPLETE
+}
 
-var ball_reference: RigidBody2D = null
-var hole_is_complete: bool = false
+var power: float = 0.0
+var max_power: float = 1000.0
+var angle: float = 0.0
+var ball_state: BallState = BallState.IDLE
+var ball_radius: float = 10.0
 
-signal hole_completed_display
+var power_increment: float = 5.0
+
+# --- Hazard / reset support -------------------------------------------------
+# The last spot the ball was resting on safe ground, captured the moment it was
+# hit. If the ball ends up in water or out of bounds, we drop it back here.
+var last_safe_position: Vector2 = Vector2.ZERO
+
+# We remember the ball's normal damping so the sand trap can temporarily raise
+# it (to slow the ball down) and then restore it when the ball leaves the sand.
+var default_linear_damp: float = 0.0
+
+# Add a +1 penalty stroke when the ball lands in water / goes out of bounds.
+# Set to false in the Inspector if you don't want the penalty.
+@export var hazard_penalty: bool = true
 
 
 func _ready():
-	# Set the initial par for this hole
-	Scoremanager.set_par(par)
-
-	# IMPORTANT: the ball is a RigidBody2D (a physics body), so we must listen
-	# to "body_entered", NOT "area_entered". "area_entered" only fires when
-	# another Area2D enters, which is why the ball was never being detected.
-	# Connecting here in code means you don't need any signal wired in the editor.
-	if not body_entered.is_connected(_on_body_entered):
-		body_entered.connect(_on_body_entered)
-
-	print("Hole %d ready (Par %d)" % [hole_number, par])
+	# Start with a valid safe position in case the very first shot goes wrong.
+	last_safe_position = global_position
+	default_linear_damp = linear_damp
 
 
-func _on_body_entered(body):
-	# Only react to the ball, and only once per hole.
-	if hole_is_complete:
+func _process(delta):
+	inputs(delta)
+
+	angle = fmod(angle, 360.0)
+
+
+func inputs(delta):
+	# If the hole is complete, block ALL input so the player can't hit the ball.
+	if ball_state == BallState.HOLE_COMPLETE:
 		return
-	if body is RigidBody2D:
-		ball_reference = body
-		_complete_hole()
+
+	# Check if ball is moving
+	var is_ball_moving = linear_velocity.length() > 2
+
+	# Reset state when ball stops
+	if ball_state == BallState.HIT and not is_ball_moving:
+		ball_state = BallState.IDLE
+
+	if Input.is_action_just_released("Hitball"):
+		if ball_state == BallState.IS_CHARGING:
+			launch_ball()
+			ball_state = BallState.HIT
+			Scoremanager.add_hit()
+
+	# Power control with up/down arrows
+	if (ball_state == BallState.IDLE or ball_state == BallState.IS_CHARGING) and not is_ball_moving:
+		last_safe_position = global_position
+		rotation = 0
+		linear_velocity = Vector2.ZERO
+
+		if Input.is_action_pressed("Up"):
+			ball_state = BallState.IS_CHARGING
+			power = min(power + power_increment, max_power)
+		if Input.is_action_pressed("Down"):
+			ball_state = BallState.IS_CHARGING
+			power = max(power - power_increment, 0.0)
+
+		# Angle control with arrow keys
+		if Input.is_action_pressed("right"):
+			angle -= 2.0
+		if Input.is_action_pressed("left"):
+			angle += 2.0
 
 
-func _complete_hole():
-	if Scoremanager.hit_count == 0:
-		return  # Ball is in the hole but was never actually hit — ignore.
-
-	# Lock the hole so it can't complete twice (e.g. ball bouncing in/out).
-	hole_is_complete = true
-
-	# Record the score for this hole. This emits Scoremanager.hole_completed,
-	# which the HUD listens to and shows the "Hole Complete!" popup as UI text.
-	Scoremanager.complete_hole()
-
-	# Tell the ball the hole is done so the player can no longer hit it.
-	if ball_reference and ball_reference.has_method("complete_hole"):
-		ball_reference.complete_hole()
-
-	# Emit this so you can hook up a results screen / next-hole button elsewhere.
-	hole_completed_display.emit()
+func launch_ball():
+	var radians = deg_to_rad(angle)
+	var force = Vector2(cos(radians), -sin(radians)) * (power / max_power) * 1000
+	linear_velocity = force
 
 
-# Call this to set up the next hole
-func setup_next_hole(new_par: int, new_hole_number: int = 1):
-	par = new_par
-	hole_number = new_hole_number
-	Scoremanager.set_par(par)
-	Scoremanager.reset_hole()
-	hole_is_complete = false
-	ball_reference = null
-	print("Hole %d setup (Par %d)" % [hole_number, par])
+func complete_hole():
+	"""Called by the hole when the ball enters it."""
+	ball_state = BallState.HOLE_COMPLETE
+	linear_velocity = Vector2.ZERO
+	angular_velocity = 0.0
+	# Freeze the body so gravity / leftover forces can't move it out of the hole.
+	freeze = true
 
 
-# Reset to initial state
-func reset_hole():
-	Scoremanager.reset_hole()
-	hole_is_complete = false
-	ball_reference = null
-	print("Hole %d reset" % hole_number)
+# --- Called by the Water / Out-of-bounds hazard -----------------------------
+func return_to_safe_position():
+	# Stop the ball dead and drop it back where it was last hit from.
+	linear_velocity = Vector2.ZERO
+	angular_velocity = 0.0
+	rotation = 0.0
+	global_position = last_safe_position
+
+	# Ready to be hit again.
+	ball_state = BallState.IDLE
+	power = 0.0
+
+	if hazard_penalty:
+		Scoremanager.add_hit()  # +1 penalty stroke.
+
+
+# --- Called by the Sand trap ------------------------------------------------
+func enter_sand(sand_damp: float):
+	# Crank up damping so the ball slows quickly, like real sand.
+	linear_damp = sand_damp
+
+
+func exit_sand():
+	# Back to normal rolling.
+	linear_damp = default_linear_damp
+
+
+# --- Called by the Jump pad -------------------------------------------------
+# Fires the ball off in `direction` at `strength` speed. Direction doesn't need
+# to be normalized (we handle that here). No stroke is counted -- a jump pad is
+# part of the course, not a swing.
+func launch_from_pad(direction: Vector2, strength: float):
+	# Don't fling the ball out of a completed hole.
+	if ball_state == BallState.HOLE_COMPLETE:
+		return
+
+	linear_velocity = direction.normalized() * strength
+	angular_velocity = 0.0
+
+	# Treat it like a shot in flight so the "reset to IDLE when it stops" logic
+	# in inputs() takes over once the ball settles.
+	ball_state = BallState.HIT
+
+
+# Optional helper if you reset/reuse the same ball for the next hole.
+func reset_ball(start_position: Vector2 = global_position):
+	freeze = false
+	ball_state = BallState.IDLE
+	power = 0.0
+	linear_velocity = Vector2.ZERO
+	angular_velocity = 0.0
+	global_position = start_position
+	last_safe_position = start_position

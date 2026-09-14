@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://8ijuq5fhakmg"]
+
+[ext_resource type="Texture2D" uid="uid://cvjmjo3mx1wn" path="res://Src/art/flgof/hazard_bumper.png" id="1_po3yn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pg6nb"]
+radius = 39.051247
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_17p5i"]
+bounce = 0.4
+absorbent = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_17p5i"]
+radius = 28.01785
+
+[node name="BounsePad" type="Area2D" unique_id=960168665]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2097667713]
+shape = SubResource("CircleShape2D_pg6nb")
+
+[node name="staticpad" type="StaticBody2D" parent="." unique_id=540240998]
+physics_material_override = SubResource("PhysicsMaterial_17p5i")
+
+[node name="Sprite2D" type="Sprite2D" parent="staticpad" unique_id=1532156295]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_po3yn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="staticpad" unique_id=1673480268]
+shape = SubResource("CircleShape2D_17p5i")
