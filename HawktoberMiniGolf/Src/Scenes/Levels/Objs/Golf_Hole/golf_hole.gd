@@ -1,5 +1,5 @@
 extends Area2D
-
+class_name Golfhole
 @export var par: int = 4
 @export var hole_number: int = 1
 

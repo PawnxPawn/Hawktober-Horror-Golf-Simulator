@@ -22,10 +22,6 @@ shape = SubResource("CircleShape2D_17p5i")
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_p2id3")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1761749892]
-limit_smoothed = true
-position_smoothing_enabled = true
-
 [node name="Control" parent="." unique_id=1100805222 node_paths=PackedStringArray("ball") instance=ExtResource("3_p2id3")]
 ball = NodePath("..")
 arrow_texture = ExtResource("4_j7mj6")

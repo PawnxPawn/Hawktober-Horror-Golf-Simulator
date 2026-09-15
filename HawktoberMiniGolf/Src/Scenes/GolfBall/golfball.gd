@@ -1,5 +1,5 @@
 extends RigidBody2D
-
+class_name Golfball
 enum BallState {
 	IDLE,
 	IS_CHARGING,

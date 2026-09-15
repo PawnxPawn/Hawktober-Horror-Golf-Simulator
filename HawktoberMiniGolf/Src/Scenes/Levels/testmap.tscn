@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://8ijuq5fhakmg" path="res://Src/Scenes/Levels/Hazards/bounse_pad.tscn" id="6_w1iah"]
 [ext_resource type="Script" uid="uid://0hriblou2gxs" path="res://Src/Scenes/Levels/Hazards/bounse_pad.gd" id="7_nmfrm"]
 [ext_resource type="PackedScene" uid="uid://dqpsguey7fulm" path="res://Src/Scenes/Levels/Objs/out_of_bounds.tscn" id="10_nmfrm"]
+[ext_resource type="PackedScene" uid="uid://crfb3d4pupfxn" path="res://Src/Scenes/GolfBall/camera_2d.tscn" id="11_lcnqc"]
+[ext_resource type="Script" uid="uid://bdbtmcntxs4t3" path="res://Src/Scenes/GolfBall/camera_2d.gd" id="12_lk2f4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_17p5i"]
 
@@ -71,3 +73,8 @@ position = Vector2(1082, 239)
 
 [node name="Windmill" parent="Hazards" unique_id=1290646623 instance=ExtResource("6_ew4rs")]
 position = Vector2(-421, 238)
+
+[node name="Camera2D" parent="." unique_id=1098918593 node_paths=PackedStringArray("ball", "hole") instance=ExtResource("11_lcnqc")]
+script = ExtResource("12_lk2f4")
+ball = NodePath("../GolfBall")
+hole = NodePath("../GolfHole")
