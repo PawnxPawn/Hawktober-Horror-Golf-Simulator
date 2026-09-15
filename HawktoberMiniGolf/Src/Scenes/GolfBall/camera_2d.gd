@@ -1,13 +1,5 @@
 extends Camera2D
 
-# --- Intro fly-over ----------------------------------------------------------
-# On level start the view sits on the HOLE, then slowly pans across the level
-# to the BALL. The player can't swing until the pan finishes.
-#
-# Setup:
-#   1. Attach this script to your Camera2D.
-#   2. In the Inspector, drag your golf ball into "Ball" and your hole into "Hole".
-#   3. Make sure your ball script has a set_input_locked() method (see notes).
 
 @export var ball: Golfball            # drag your golf ball node here
 @export var hole: Golfhole            # drag your hole node here
